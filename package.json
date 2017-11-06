@@ -1,0 +1,19 @@
+{
+  "name": "shopping_cart_simulation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mkbowen78/shopping_cart_simulation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkbowen78/shopping_cart_simulation/issues"
+  },
+  "homepage": "https://github.com/mkbowen78/shopping_cart_simulation#readme"
+}
