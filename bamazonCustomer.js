@@ -14,13 +14,15 @@ var connection = mysql.createConnection({
 // test if connected to database
 connection.connect(function(err){
   console.log("You're amazing! You did it! Connected Id: " + connection.threadId);
+  buyStuff();
 });
 
 // show user available products -- TABLE WILL GO HERE SOMEHOW
 
 
 // ask user if they would like to purchase something from inventory
-var buyStuff() {
+//var buyStuff() {
+function buyStuff() {
   inquirer.prompt({
     // first question
     name:"pickItem",
@@ -40,7 +42,7 @@ var buyStuff() {
     {
       name: "howMany",
       type: "input",
-      message: "Enter the quanty you would like of this item..."
+      message: "Enter the quanty you would like of this item...",
       // hopefully checks to make sure only a number is chosen
       validate: function(value) {
         if (isNaN(value) === false) {
@@ -48,7 +50,7 @@ var buyStuff() {
           }
             return false;
         }
-      }.then(function(answer) {
+      }).then(function(answer) {
         var itemID = answer.itemID;
         var quantity = answer.quantity;
         // connect to database get and store stock qty and alert if user orders more than is in inventory
@@ -59,7 +61,6 @@ var buyStuff() {
                 // alert if order is larger than what's in inventory
                 if (stock_qty < quantity) {
                   console.log("Nope. There isn't enough in stock to fill that order. Sorry, but you have to choose a smaller amount.");
-                    setTimeout(buyStuff, 1000); //recall buyStuff after 1 second
                 } else {
                   // subtract purchased amounts from inventory
                   stock_qty -= quantity;
@@ -98,12 +99,8 @@ var buyStuff() {
                   buyStuff();
                 } else {
                   //all done
-                  console.log("Thanks for shopping with us. You rock! Please visit again soon.")
+                  console.log("Thanks for shopping with us. You rock! Please visit again soon.");
                 }
-            })
-          }
-
-      });
-  };
-
+            });
+});
 }
